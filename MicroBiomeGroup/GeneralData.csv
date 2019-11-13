@@ -1,4 +1,4 @@
-Key,Sex,Group,Injection,Injection_Time,Hookup_Time,EEG_Usable,1st_Behavioral_Seizure_Time_mins_post_inj,1st_Focal_Seizure_Time_mins_post_inj
+Key,Sex,Group,Injection,Injection_Time,Hookup_Time,EEG_Usable,First_Behavioral_Seizure_Time_mins_post_inj,First_Focal_Seizure_Time_mins_post_inj
 Mouse1,F,NoAbCec,Sal,0,49,98,NA,NA
 Mouse2,F,NoAbCec,KA,0,82,128,150,132
 Mouse4,F,AbSal,KA,0,79,79,165,102

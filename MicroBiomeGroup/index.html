@@ -3,7 +3,44 @@
 <h1>This is out dashboard for the MicroBiome Group Project</h1>
 <p>We will put pretty visualizations in here </p>
 
-<p>This is to show how fetching works</p>
-<p>Changes Made</p>
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+
+
+
+<body>
+
+  <div id="chartholder1">
+    <h1>This is my attempt at reading our data</h1>
+    <script>
+      var margin = {
+          top: 10,
+          right: 30,
+          bottom: 30,
+          left: 40
+        },
+        width = 460 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+
+      var svg = d3.select("#chartholder1")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+
+
+      // Generate Chart fro Pollen CSV Data
+      // Source: http://metagrid2.sv.vt.edu/~npolys/InfoVis2019/pollen.csv
+      d3.csv("GeneralData.csv").then(function(data) {
+        console.log("columns are: " + data.columns)
+      })
+    </script>
+  </div>
+</body>
+
+
 
 </html>
