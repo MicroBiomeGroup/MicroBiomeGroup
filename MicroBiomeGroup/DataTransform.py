@@ -3,7 +3,7 @@ import numpy as np
 import csv
 import pprint as pprint
 
-data = pd.read_csv('GeneralData.csv',  usecols = ['Sex'])
+data = pd.read_csv('GeneralData.csv',  usecols = ['Sex'])  #hh
 unique, counts = np.unique(data.values, return_counts=True)
 zippedDic = dict(zip(unique, counts))
 myCount = sorted(zippedDic.items(), key=lambda x: x[1])
