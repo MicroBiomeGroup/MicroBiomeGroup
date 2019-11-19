@@ -32,7 +32,7 @@ with open('HeatMapBehavioralSeizures.csv', mode='w') as employee_file:
             lineSplit = line.split(',')
             print(lineSplit)
 
-            key = lineSplit[0]
+            key = lineSplit[2] + " " +lineSplit[0]
             i = 4 #offset of first behavioral seizure time stamp
             hour = 1
             while(i < 16):
