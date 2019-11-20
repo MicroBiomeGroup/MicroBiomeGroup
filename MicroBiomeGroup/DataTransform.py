@@ -25,7 +25,7 @@ data.to_csv('Group.csv', index=False)
 with open('HeatMapBehavioralSeizures.csv', mode='w') as employee_file:
     employee_writer = csv.writer(employee_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 
-    employee_writer.writerow(['group', 'variable', 'value'])
+    employee_writer.writerow(['group', 'variable', 'value', 'treatment'])
     with open("HeatmapData.csv") as f:
         f.readline() #eat the csv header from the lines
         for line in f:
@@ -36,8 +36,9 @@ with open('HeatMapBehavioralSeizures.csv', mode='w') as employee_file:
             i = 4 #offset of first behavioral seizure time stamp
             hour = 1
             while(i < 16):
-                value = lineSplit[i]
-                time = 'Behavioral_H' + str(hour)
+                value = int(lineSplit[i])
+                time =  "H" + str(hour)
                 hour+=1
                 i+=1
-                employee_writer.writerow([time, key, value])
+                treatment = lineSplit[3]
+                employee_writer.writerow([time, key, value, treatment])
