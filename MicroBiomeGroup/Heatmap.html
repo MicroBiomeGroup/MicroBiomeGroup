@@ -102,7 +102,7 @@
             })])
             .range(colors);
 
-          var cards = svg.selectAll(".hour")
+          var cards = svg.selectAll(".variable")
             .data(data, function(d) {
               return d.group + ':' + d.variable;
             });

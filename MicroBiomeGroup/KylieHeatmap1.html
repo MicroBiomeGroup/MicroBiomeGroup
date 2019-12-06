@@ -60,6 +60,7 @@
 
   var heatmapChart = function(csvFile) {
     d3.csv(csvFile, function(data) {
+      d3.selectAll("svg > g >  *").remove();
 
       // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
       var myGroups = d3.map(data, function(d) {
@@ -184,8 +185,6 @@
     .attr("type", "button")
     .attr("class", "dataset-button")
     .on("click", function(d) {
-      var svg = d3.select("svg");
-      svg.clear()
       heatmapChart(d);
     });
 </script>
