@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Microbiome Group</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <h1>Microbiome Group</h1>
+    <h2>Seizure Activity over 9 Hours</h2>
+    <p>Scroll for more time </p>
+    <iframe src="Ridgelines.html" height="600" width=2000" frameBorder="0"> </iframe>
+    <div class="row">
+      <div class="col-sm-3 col-md-6 col-lg-4">
+        <h2>Latency Averages in Seizure Onset</h2>
+        <p></p>
+        <p>Select Behavioral, Combined, or Focal</p>
+        <form id="form1" method="post">
+          <select id="location" onchange="setIframeSource()">
+            <option value="behavioural.html">Behavioral</option>
+            <option value="combined.html">Combined</option>
+            <option value="focal.html">Focal</option>
+          </select>
+        </form>
+
+        <iframe id="myIframe" src="behavioural.html" frameborder="0" marginwidth="0" marginheight="0" width="800" height="650"></iframe>
+      </div>
+      <div class="col-sm-9 col-md-6 col-lg-8">
+        <h2>Seizure Heatmap</h2>
+        <iframe src="KylieHeatmap1.html" height="1000" width="800" frameBorder="0"></iframe>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script>
+  function setIframeSource() {
+    // behavior of myIframe
+    var theSelect = document.getElementById('location');
+    var theIframe = document.getElementById('myIframe');
+    var theUrl;
+    theUrl = theSelect.options[theSelect.selectedIndex].value;
+    theIframe.src = theUrl;
+
+    // behavior of myIframe2
+    var theSelect2 = document.getElementById('location');
+    var theIframe2 = document.getElementById('myIframe2');
+    var theUrl2;
+    theUrl2 = theSelect2.options[theSelect2.selectedIndex].value;
+    theIframe2.src = theUrl2;
+
+    // behavior of myIframe3
+    var theSelect3 = document.getElementById('location');
+    var theIframe3 = document.getElementById('myIframe3');
+    var theUrl3;
+    theUrl3 = theSelect3.options[theSelect3.selectedIndex].value;
+    theIframe3.src = theUrl3;
+  }
+</script>
+
+
+</html>

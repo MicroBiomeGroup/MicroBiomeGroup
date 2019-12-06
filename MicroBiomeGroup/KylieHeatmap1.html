@@ -2,17 +2,16 @@
 <!--Tasks: Order the names of the mice -->
 
 <meta charset="utf-8">
-<p>Author: Kylie Davidson</p>
+
 
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v4.js"></script>
 
 <!-- Create a div where the graph will take place -->
-<div id="my_dataviz"></div>
-<div id="my_tooltip">
-</div>
-
 <div id="dataset-picker"></div>
+<div id="my_dataviz"></div>
+<div id="my_tooltip"></div>
+
 
 <script>
   // set the dimensions and margins of the graph
@@ -168,17 +167,9 @@
       .attr("y", -50)
       .attr("text-anchor", "left")
       .style("font-size", "22px")
-      .text("Seizure Heatmap");
 
-    // // Add subtitle to graph
-    // svg.append("text")
-    //   .attr("x", 0)
-    //   .attr("y", -20)
-    //   .attr("text-anchor", "left")
-    //   .style("font-size", "14px")
-    //   .style("fill", "grey")
-    //   .style("max-width", 400)
-    //   .text("Select a dataset below:");
+
+
   };
   heatmapChart(datasets[0]);
 
@@ -193,7 +184,8 @@
     .attr("type", "button")
     .attr("class", "dataset-button")
     .on("click", function(d) {
-      ("#my_dataviz").empty
+      var svg = d3.select("svg");
+      svg.clear()
       heatmapChart(d);
     });
 </script>

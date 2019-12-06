@@ -1,0 +1,79 @@
+<head>
+  <!-- Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+
+<body>
+
+  <div id="myDiv" style="width: 480px; height: 400px;">
+    <h3 style="text-align:center">Combined Seizure Latency</h3>
+  </div>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script>
+    var trace1 = {
+      x: ['AbSal', 'AbCec', 'NoAbCec'],
+      y: [161.1428571, 310.2, 188.5714286],
+      name: 'Focal Seizure Latency',
+      error_y: {
+        type: 'data',
+        array: [73.30608647, 118.4881429, 69.32973565],
+        visible: true
+      },
+      type: 'bar'
+    };
+    var trace2 = {
+      x: ['AbSal', 'AbCec', 'NoAbCec'],
+      y: [195.1428571, 428.6, 306.1428571],
+      name: 'Behavioural Seizure Latency',
+      error_y: {
+        type: 'data',
+        array: [69.3872599, 104.9607546, 76.57595935],
+        visible: true
+      },
+      type: 'bar'
+    };
+
+    var trace3 = {
+      x: ['AbSal', 'AbCec', 'NoAbCec'],
+      y: [161.1428571, 310.2, 188.5714286],
+      name: 'Combined Seizure Latency',
+      error_y: {
+        type: 'data',
+        array: [73.30608647, 118.4881429, 69.32973565],
+        visible: true
+      },
+      type: 'bar'
+    };
+
+
+    var data = [trace3];
+
+
+    var layout = {
+
+      xaxis: {
+        title: {
+          //text: 'Category',
+          font: {
+            family: 'Courier New, monospace',
+            size: 18,
+            color: '#7f7f7f'
+          }
+        },
+      },
+      yaxis: {
+        title: {
+          text: 'Latency ( in mins)',
+          font: {
+            family: 'Courier New, monospace',
+            size: 18,
+            color: '#7f7f7f'
+          }
+        }
+      }
+    };
+    Plotly.newPlot('myDiv', data, layout, {
+      showSendToCloud: true
+    });
+  </script>
+</body>
