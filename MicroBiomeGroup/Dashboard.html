@@ -2,6 +2,65 @@
 <html lang="en">
 
 <head>
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #111;
+    }
+
+    .active {
+      background-color: #4CAF50;
+    }
+  </style>
+</head>
+
+
+
+
+<ul>
+  <li><a class="active" href="Dashboard.html">Dashboard </a> </li>
+  <li><a href="Ridgelines.html">Ridgelines</a></li>
+  <li><a href="Barchart.html">Bar Charts</a></li>
+  <li><a href="KylieHeatmap1.html">Heatmap</a></li>
+  <li style="float:right"><a href="About.html">About Us</a></li>
+</ul>
+
+
+
+
+
+<meta charset="utf-8">
+
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="dataset-picker"></div>
+<div id="my_dataviz"></div>
+<div id="my_tooltip"></div>
+
+
+<head>
   <title>Microbiome Group</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
