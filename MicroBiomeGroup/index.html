@@ -1,98 +1,128 @@
 <!DOCTYPE html>
-<html>
-<h1>This is out dashboard for the MicroBiome Group Project</h1>
-<p>We will put pretty visualizations in here </p>
-<a href="/KylieHeatmap1.html">heatmap I am working on </a>
-<p></p>
+<html lang="en">
+
+<head>
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: #111;
+    }
+
+    .active {
+      background-color: #4CAF50;
+    }
+  </style>
+</head>
 
 
-<a href="/HeatMapBehavioralSeizures.csv">heatmap data I am working on </a>
-<p></p>
-<a href="/ridgeline.html">ridgeline html located here </a>
-<p></p>
-
-<script src="https://d3js.org/d3.v5.min.js"></script>
 
 
+<ul>
+  <li><a class="active" href="index.html">Dashboard </a> </li>
+  <li><a href="RidgelinesWithNav.html">Ridgelines</a></li>
+  <li><a href="BarchartWithNav.html">Bar Charts</a></li>
+  <li><a href="KylieHeatmapWithNav.html">Heatmap</a></li>
+  <li style="float:right"><a href="About.html">About Us</a></li>
+</ul>
+
+
+
+
+
+<meta charset="utf-8">
+
+
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v4.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="dataset-picker"></div>
+<div id="my_dataviz"></div>
+<div id="my_tooltip"></div>
+
+
+<head>
+  <title>Microbiome Group</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
 
 <body>
 
-  <div id="chartholder1">
-    <h1>This is my attempt at reading our data</h1>
-    <script>
-      var margin = {
-          top: 30,
-          right: 30,
-          bottom: 70,
-          left: 60
-        },
-        width = 460 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+  <div class="container-fluid">
+    <h1>Microbiome Group</h1>
+    <h2>Seizure Activity over 9 Hours</h2>
+    <iframe src="Ridgelines.html" height="500" width=2000" frameBorder="0"> </iframe>
+    <div class="row">
+      <div class="col-sm-3 col-md-6 col-lg-4">
+        <h2>Latency Averages in Seizure Onset</h2>
+        <p></p>
+        <p>Select Behavioral, Combined, or Focal</p>
+        <form id="form1" method="post">
+          <select id="location" onchange="setIframeSource()">
+            <option value="behavioural.html">Behavioral</option>
+            <option value="combined.html">Combined</option>
+            <option value="focal.html">Focal</option>
+          </select>
+        </form>
 
-      // append the svg object to the body of the page
-      var svg = d3.select("#chartholder1")
-        .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-        .append("g")
-        .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
-
-
-
-      // Generate Chart fro Pollen CSV Data
-      // Source: http://metagrid2.sv.vt.edu/~npolys/InfoVis2019/pollen.csv
-      d3.csv("Group.csv").then(function(data) {
-
-
-
-        console.log("columns are: " + data.columns)
-
-
-        // X axis
-        var x = d3.scaleBand()
-          .range([0, width])
-          .domain(data.map(function(d) {
-            return d.group;
-          }))
-          .padding(0.2);
-        svg.append("g")
-          .attr("transform", "translate(0," + height + ")")
-          .call(d3.axisBottom(x))
-          .selectAll("text")
-          .attr("transform", "translate(-10,0)rotate(-45)")
-          .style("text-anchor", "end");
-
-        // Add Y axis
-        var y = d3.scaleLinear()
-          .domain([0, 30])
-          .range([height, 0]);
-        svg.append("g")
-          .call(d3.axisLeft(y));
-
-        // Bars
-        svg.selectAll("mybar")
-          .data(data)
-          .enter()
-          .append("rect")
-          .attr("x", function(d) {
-            return x(d.group);
-          })
-          .attr("y", function(d) {
-            return y(d.count);
-          })
-          .attr("width", x.bandwidth())
-          .attr("height", function(d) {
-            return height - y(d.count);
-          })
-          .attr("fill", "#69b3a2")
-
-
-      })
-    </script>
+        <iframe id="myIframe" src="behavioural.html" frameborder="0" marginwidth="0" marginheight="0" width="800" height="650"></iframe>
+      </div>
+      <div class="col-sm-9 col-md-6 col-lg-8">
+        <h2>Seizure Heatmap</h2>
+        <iframe src="KylieHeatmap1.html" height="900" width="800" frameBorder="0"></iframe>
+      </div>
+    </div>
   </div>
+
 </body>
 
+<script>
+  function setIframeSource() {
+    // behavior of myIframe
+    var theSelect = document.getElementById('location');
+    var theIframe = document.getElementById('myIframe');
+    var theUrl;
+    theUrl = theSelect.options[theSelect.selectedIndex].value;
+    theIframe.src = theUrl;
+
+    // behavior of myIframe2
+    var theSelect2 = document.getElementById('location');
+    var theIframe2 = document.getElementById('myIframe2');
+    var theUrl2;
+    theUrl2 = theSelect2.options[theSelect2.selectedIndex].value;
+    theIframe2.src = theUrl2;
+
+    // behavior of myIframe3
+    var theSelect3 = document.getElementById('location');
+    var theIframe3 = document.getElementById('myIframe3');
+    var theUrl3;
+    theUrl3 = theSelect3.options[theSelect3.selectedIndex].value;
+    theIframe3.src = theUrl3;
+  }
+</script>
 
 
 </html>
