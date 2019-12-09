@@ -33,6 +33,11 @@
 
     .
   </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -46,88 +51,12 @@
   </ul>
 
 
-
-
-  <head>
-    <!-- Plotly.js -->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-  </head>
-
-  <body>
-
-    <div id="myDiv" style="width: 480px; height: 400px;">
-      <h3 style="text-align:center">Behavioural Seizure Latency</h3>
+  <div class="row">
+    <div class="col-sm-4">
+      <iframe id="myIframe" src="behavioural.html" frameborder="0" marginwidth="0" marginheight="0" width="400" height="650"></iframe>
     </div>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script>
-      var trace1 = {
-        x: ['AbSal', 'AbCec', 'NoAbCec'],
-        y: [161.1428571, 310.2, 188.5714286],
-        name: 'Focal Seizure Latency',
-        error_y: {
-          type: 'data',
-          array: [73.30608647, 118.4881429, 69.32973565],
-          visible: true
-        },
-        type: 'bar'
-      };
-      var trace2 = {
-        x: ['AbSal', 'AbCec', 'NoAbCec'],
-        y: [195.1428571, 428.6, 306.1428571],
-        name: 'Behavioural Seizure Latency',
-        error_y: {
-          type: 'data',
-          array: [69.3872599, 104.9607546, 76.57595935],
-          visible: true
-        },
-        type: 'bar'
-      };
+    <div class="col-sm-4"><iframe id="myIframe" src="focal.html" frameborder="0" marginwidth="0" marginheight="0" width="600" height="650"></iframe></div>
 
-      var trace3 = {
-        x: ['AbSal', 'AbCec', 'NoAbCec'],
-        y: [161.1428571, 310.2, 188.5714286],
-        name: 'Combined Seizure Latency',
-        error_y: {
-          type: 'data',
-          array: [73.30608647, 118.4881429, 69.32973565],
-          visible: true
-        },
-        type: 'bar'
-      };
-
-
-      var data = [trace2];
-      var layout = {
-
-        xaxis: {
-          title: {
-            //text: 'Category',
-            font: {
-              family: 'Courier New, monospace',
-              size: 18,
-              color: '#7f7f7f'
-            }
-          },
-        },
-        yaxis: {
-          title: {
-            text: 'Latency ( in mins)',
-            font: {
-              family: 'Courier New, monospace',
-              size: 18,
-              color: '#7f7f7f'
-            }
-          }
-        }
-      };
-      Plotly.newPlot('myDiv', data, layout, {
-        showSendToCloud: true
-      });
-    </script>
-    <p></p>
-    <p></p>
-    <p></p>
-    <br></br>
-
-    <p>Add the other 2 bar charts with made on this pages too </p>
-  </body>
+    <div class="col-sm-4">
+      <iframe id="myIframe" src="combined.html" frameborder="0" marginwidth="0" marginheight="0" width="400" height="650"></iframe></div>
+  </div>
